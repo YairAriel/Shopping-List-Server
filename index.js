@@ -16,8 +16,8 @@ let uri = process.env.MOMGO_URI || 'mongodb://localhost:27017';
     collection = db.collection('users');
 })();
 
-app.get('/all-users', async (req, res) => {
-    res.send(await collection.find({}).toArray());
+app.get('/', async (req, res) => {
+    res.send('<h1>Welcome!</h1>');
 });
 
 app.get('/list/:list_name', async (req, res) => {
