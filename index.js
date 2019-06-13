@@ -82,4 +82,4 @@ app.put('/update-settings/:list_name', async (req, res) => {
     }
 });
 
-app.listen(3000, console.log('Server is running....'));
+app.listen(process.env.PORT || 3000, console.log('Server is running....'));
