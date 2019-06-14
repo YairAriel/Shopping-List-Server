@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 let collection = null;
-let uri = process.env.MOMGO_URI || 'mongodb://localhost:27017';
+let uri = process.env.MONGO_URI || 'mongodb://localhost:27017';
 
 (async() => {
     const connection = await MongoClient.connect(uri, {useNewUrlParser: true})
