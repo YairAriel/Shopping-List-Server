@@ -1,17 +1,20 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const {MongoClient} = require('mongodb');
+// const {MongoClient} = require('mongodb');
+const mongodb = require('mongodb');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
 let collection = null;
-let uri = process.env.MONGO_URI || 'mongodb://localhost:27017';
+// let uri = process.env.MONGO_URI || 'mongodb://localhost:27017';
 
 (async() => {
-    const connection = await MongoClient.connect(uri, {useNewUrlParser: true})
+    // const connection = await MongoClient.connect(uri, {useNewUrlParser: true})
+    const url = process.env.MONGO_URI || 'mongodb://localhost:27017';
+    const connection = await mongodb.connect(url);
     const db = connection.db('shopping_list');
     collection = db.collection('users');
 })();
