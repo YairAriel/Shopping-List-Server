@@ -21,7 +21,13 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/list/:list_name', async (req, res) => {
-    res.send(await collection.findOne({ list_name: req.params.list_name }));
+    let list = await collection.findOne({ list_name: req.params.list_name });
+    if (list) {
+        res.send(list);
+    } else {
+        res.send({});
+    }
+
 });
 
 app.post('/list', async (req, res) => {
