@@ -21,12 +21,7 @@ app.get('/', async (req, res) => {
 });
 
 app.get('/list/:list_name', async (req, res) => {
-    let list = await collection.findOne({ list_name: req.params.list_name });
-    if (list) {
-        res.send(list);
-    } else {
-        res.send('no list');
-    }
+    res.send(await collection.findOne({ list_name: req.params.list_name }));
 });
 
 app.post('/list', async (req, res) => {
