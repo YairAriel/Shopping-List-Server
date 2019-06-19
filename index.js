@@ -27,7 +27,6 @@ app.get('/list/:list_name', async (req, res) => {
     } else {
         res.send({});
     }
-
 });
 
 app.post('/list', async (req, res) => {
