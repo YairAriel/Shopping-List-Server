@@ -7,6 +7,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use('/', express.static('client'));
+
 let collection = null;
 const uri = process.env.MONGO_URI || 'mongodb://localhost:27017';
 
@@ -15,10 +17,6 @@ const uri = process.env.MONGO_URI || 'mongodb://localhost:27017';
     const db = connection.db('shopping_list');
     collection = db.collection('users');
 })();
-
-app.get('/', async (req, res) => {
-    res.send('<h1>Welcome!</h1>');
-});
 
 app.get('/list/:list_name', async (req, res) => {
     let list = await collection.findOne({ list_name: req.params.list_name });
